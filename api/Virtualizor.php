@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bennet
- * Date: 2/15/2018
- * Time: 11:32 PM
- */
-
 namespace Virtualizor;
 
 use Virtualizor\Objects\IPPool;

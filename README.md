@@ -1,11 +1,13 @@
 # Virtualizor API Wrapper [![Build Status](https://travis-ci.org/bennetgallein/VirtualizorPHP.svg?branch=master)](https://travis-ci.org/bennetgallein/VirtualizorPHP)
-This is a wrapper for the API for Virtualizor. Documentation for this Version of the API can be found here:
+This is a wrapper for the API for Virtualizor. 
+### That version is Forked from https://github.com/bennetgallein/VirtualizorPHP.
+Documentation for this Version of the API can be found here:
 http://virtualizor.com/admin-api/#virtual-servers . Own Documentation will follow.
 
 ## Installation
 Install this library via composer is pretty easy. 
 ```
-composer require bennetgallein/virtualizor-php
+composer require cookiemc337/virtualizor-php-lib
 ```
 And then you can get started with your project.
 
@@ -20,7 +22,7 @@ $virt = new \Virtualizor\Virtualizor("ip", "key", "pass", "port");
 
 Get some information about the master
 ```php
-$info = json_decode($virt->serverInfo());
+$info = $virt->serverInfo();
 ```
 
 ### VirtualServer:

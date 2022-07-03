@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bennet
- * Date: 2/16/2018
- * Time: 2:54 PM
- */
 
 namespace Virtualizor\Objects;
 

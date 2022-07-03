@@ -1,9 +1,13 @@
 {
-    "name": "bennetgallein/virtualizor-php",
-    "description": "A Wrapper for the Virtualizor API",
+    "name": "cookiemc337/virtualizor-php-lib",
+    "description": "A Wrapper for the Virtualizor API (Updated version from Bennet Gallein)",
     "type": "library",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Julien Michell Herwig",
+            "email": "admin@cookiemc.de"
+        },
         {
             "name": "Bennet Gallein",
             "email": "bennet@intranetproject.net"
