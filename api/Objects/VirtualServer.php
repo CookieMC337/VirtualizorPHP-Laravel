@@ -38,6 +38,7 @@ class VirtualServer {
 
     public function getInformation($vmid){
         $data =  $this->client->status($vmid);
+        $data = json_encode($data);
         $resp = array(
             "status" => $data[$vmid]->status,
             "used_cpu" => $data[$vmid]->used_cpu,
