@@ -10,4 +10,8 @@ class OSTemplates {
         $this->client = $client;
         return $this;
     }
+
+    public function getOSList(){
+        return $this->client->list_distros();
+    }
 }

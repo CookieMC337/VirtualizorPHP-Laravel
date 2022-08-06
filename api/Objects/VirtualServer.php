@@ -36,5 +36,8 @@ class VirtualServer {
         return $this->client->restart($vmid);
     }
 
+    public function getInformation($vmid){
+        return $this->client->status($vmid);
+    }
 
 }
