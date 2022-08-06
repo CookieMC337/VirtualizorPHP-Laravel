@@ -37,7 +37,27 @@ class VirtualServer {
     }
 
     public function getInformation($vmid){
-        return $this->client->status($vmid);
+        $data =  $this->client->status($vmid);
+        $data = json_decode(json_encode($data));
+        $resp = array(
+            "status" => $data[$vmid]->status,
+            "used_cpu" => $data[$vmid]->used_cpu,
+            "used_ram" => $data[$vmid]->used_ram,
+            "used_disk" => $data[$vmid]->used_disk,
+            "net_in" => $data[$vmid]->net_in,
+            "net_out" => $data[$vmid]->net_out,
+            "used_inode" => $data[$vmid]->used_inode,
+            "io_read" => $data[$vmid]->io_read,
+            "io_write" => $data[$vmid]->io_write,
+            "inode" => $data[$vmid]->inode,
+            "ram" => $data[$vmid]->ram,
+            "disk" => $data[$vmid]->disk,
+            "used_bandwidth" => $data[$vmid]->used_bandwidth,
+            "bandwidth" => $data[$vmid]->bandwidth,
+            "virt" => $data[$vmid]->virt,
+        );
+
+        return $resp;
     }
 
 }
