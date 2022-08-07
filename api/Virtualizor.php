@@ -11,16 +11,29 @@ class Virtualizor {
         $this->client = new Virtualizor_Admin_API($ip, $key, $pass, $port);
     }
 
-    public function server(){
+    public function server(): VirtualServer
+    {
         return new VirtualServer($this->client);
     }
 
-    public function osTemplates(){
+    public function osTemplates(): OSTemplates
+    {
         return new OSTemplates($this->client);
     }
 
-    public function IPPool(){
+    public function IPPool(): IPPool
+    {
         return new IPPool($this->client);
+    }
+
+    public function getStorages(){
+        $page = 1;
+        $reslen = 50;
+        $post = array();
+        $post['name'] = '';
+        $post['path'] = '';
+
+        return $this->client->storages($post, $page, $reslen);
     }
 
 }
