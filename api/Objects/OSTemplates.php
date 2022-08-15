@@ -1,7 +1,6 @@
 <?php
 namespace Virtualizor\Objects;
 
-
 class OSTemplates {
 
     private $client;
