@@ -1,8 +1,10 @@
 <?php
 namespace Virtualizor;
 
+use http\Client\Curl\User;
 use Virtualizor\Objects\IPPool;
 use Virtualizor\Objects\OSTemplates;
+use Virtualizor\Objects\Users;
 use Virtualizor\Objects\VirtualServer;
 use Virtualizor\Base\Virtualizor_Admin_API;
 
@@ -29,6 +31,11 @@ class Virtualizor {
     public function IPPool(): IPPool
     {
         return new IPPool($this->client);
+    }
+
+    public function Users(): Users
+    {
+        return new Users($this->client);
     }
 
     public function getStorages(int $page = 1, int $reslen = 50){
