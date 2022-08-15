@@ -7,6 +7,11 @@ use Virtualizor\Objects\VirtualServer;
 use Virtualizor\Base\Virtualizor_Admin_API;
 
 class Virtualizor {
+    /**
+     * @var Virtualizor_Admin_API
+     */
+    private $client;
+
     public function __construct($ip, $key, $pass, $port = '4085') {
         $this->client = new Virtualizor_Admin_API($ip, $key, $pass, $port);
     }
@@ -26,9 +31,7 @@ class Virtualizor {
         return new IPPool($this->client);
     }
 
-    public function getStorages(){
-        $page = 1;
-        $reslen = 50;
+    public function getStorages(int $page = 1, int $reslen = 50){
         $post = array();
         $post['name'] = '';
         $post['path'] = '';

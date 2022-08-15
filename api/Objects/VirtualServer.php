@@ -158,20 +158,46 @@ class VirtualServer
 
     }
 
-
-
-    public function delete()
-    {
-
+    public function reinstall(int $id, int $os, string $password, int $installer = null){
+        $post = array();
+        $post['vpsid'] = $id;
+        $post['osid'] = $os;
+        $post['newpass'] = $password;
+        $post['conf'] = $password;
+        if (!is_null($installer)){
+            $post['recipe'] = $installer;
+        }else{
+            $post['recipe'] = null;
+        }
+        return $this->client->rebuild($post);
     }
 
-    public function suspend()
+    public function delete(int $id)
     {
-
+        return $this->client->delete_vs($id);
     }
 
-    public function suspendNetwork()
+    public function suspend(int $id)
     {
+        return $this->client->suspend($id);
+    }
 
+    public function unSuspend(int $id)
+    {
+        return $this->client->unsuspend($id);
+    }
+
+    public function suspendNetwork(int $id)
+    {
+        return $this->client->suspend_net($id);
+    }
+
+    public function unSuspendNetwork(int $id)
+    {
+        return $this->client->unsuspend_net($id);
+    }
+
+    public function resetBandwidth(int $id){
+        return $this->client->resetbandwidth($id);
     }
 }
