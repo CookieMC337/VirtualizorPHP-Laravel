@@ -66,13 +66,13 @@ class VirtualServer
     public function createKVM(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
-        if (!empty($userid)){
+        if (!empty($userid)) {
             $post['uid'] = $userid;
             $post['user_email'] = null;
             $post['user_pass'] = null;
             $post['fname'] = null;
             $post['lname'] = null;
-        }else{
+        } else {
             $post['uid'] = null;
             $post['user_email'] = $mail;
             $post['user_pass'] = $username;
@@ -122,13 +122,13 @@ class VirtualServer
     public function createLXC(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
-        if (!empty($userid)){
+        if (!empty($userid)) {
             $post['uid'] = $userid;
             $post['user_email'] = null;
             $post['user_pass'] = null;
             $post['fname'] = null;
             $post['lname'] = null;
-        }else{
+        } else {
             $post['uid'] = null;
             $post['user_email'] = $mail;
             $post['user_pass'] = $username;
@@ -158,21 +158,44 @@ class VirtualServer
 
     }
 
-    public function reinstall(int $id, int $os, string $password, int $installer = null){
+    public function edit(int $id, string $hostname, string $rootpassword, array $ips, int $disk_size, string $disk_st_uuid, string $disk_uuid, int $ram, int $cores, int $backupserverid)
+    {
+        $post = array();
+        $post['vpsid'] = $id;
+        $post['hostname'] = $hostname;
+        $post['rootpass'] = $rootpassword;
+        $post['ips'] = $ips;
+        $post['space'] = array(0 => array(
+            'size' => $disk_size,
+            'st_uuid' => $disk_st_uuid,
+            'disk_uuid' => $disk_uuid
+        )
+        );
+        $post['ram'] = $ram;
+        $post['cores'] = $cores;
+        $post['bpid'] = $backupserverid; //Backup server id
+        $post['editvps'] = 1;
+
+        return $this->client->editvs($post);
+    }
+
+    public function reinstall(int $id, int $os, string $password, int $installer = null)
+    {
         $post = array();
         $post['vpsid'] = $id;
         $post['osid'] = $os;
         $post['newpass'] = $password;
         $post['conf'] = $password;
-        if (!is_null($installer)){
+        if (!is_null($installer)) {
             $post['recipe'] = $installer;
-        }else{
+        } else {
             $post['recipe'] = null;
         }
         return $this->client->rebuild($post);
     }
 
-    public function getVNC(int $id){
+    public function getVNC(int $id)
+    {
         $post = array();
         $post['novnc'] = $id;
         return $this->client->vnc($post);
@@ -203,7 +226,9 @@ class VirtualServer
         return $this->client->unsuspend_net($id);
     }
 
-    public function resetBandwidth(int $id){
+    public function resetBandwidth(int $id)
+    {
         return $this->client->resetbandwidth($id);
     }
+
 }
