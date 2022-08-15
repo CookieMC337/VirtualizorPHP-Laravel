@@ -57,11 +57,11 @@ class IPPool {
     }
 
 
-    public function listIPv4(int $page, int $amount){
+    public function listIPv4(int $page = 1, int $amount = 250){
         return $this->client->ips($page, $amount);
     }
 
-    public function listIPv6(int $page, int $amount){
+    public function listIPv6(int $page = 1, int $amount = 250){
         return $this->client->iprange($page, $amount);
     }
 
