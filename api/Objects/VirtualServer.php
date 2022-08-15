@@ -172,6 +172,12 @@ class VirtualServer
         return $this->client->rebuild($post);
     }
 
+    public function getVNC(int $id){
+        $post = array();
+        $post['novnc'] = $id;
+        return $this->client->vnc($post);
+    }
+
     public function delete(int $id)
     {
         return $this->client->delete_vs($id);
