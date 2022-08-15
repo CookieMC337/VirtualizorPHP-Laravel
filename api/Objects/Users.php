@@ -14,7 +14,7 @@ class Users
 
     public function list(int $page = 1, int $amount = 100)
     {
-        $output = $this->client->users($page, $amount);
+        return $this->client->users($page, $amount);
     }
 
     public function get(string $uid = null, string $email = null)
@@ -27,7 +27,7 @@ class Users
         } elseif (!is_null($email)) {
             $post['email'] = $email;
         }
-        $output = $this->client->users($page, $reslen, $post);
+        return $this->client->users($page, $reslen, $post);
     }
 
     public function addUser(string $email, string $password, string $fistname, string $lastname, bool $clouduser, int $bandwith = 0, int $cores = 0, int $network_speed = 0, int $ipv4 = 0, int $ipv6 = 0, int $ram = 0, int $disk = 0)
