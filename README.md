@@ -25,32 +25,3 @@ Get some information about the master
 $info = $virt->serverInfo();
 ```
 
-### VirtualServer:
-Create a new VirtualServer Object by using the following:
-```php
-$virtualobject = $virt->vps();
-```
-Add Attributes and set the Act Method, then execute the query.
-```php
-$vps = $virtualobject->setAct(\Virtualizor\Objects\VirtualServer::REBUILD)->setHostname("hostname_1")->exec();
-```
-
-### IPPool
-Create a new IPPool Object by using the following:
-```php
-$virtualobject = $virt->ippool();
-```
-List all pools:
-```php
-$pools = $virtualobject->setAct(\Virtualizor\Objects\IPPool::LISTPOOLS)->exec();
-```
-
-### OSTemplates
-Create a new OSTemplates Object by using the following:
-```php
-$virtualobject = $virt->ostemplates();
-```
-List all templates:
-```php
-$ostemplates = $virtualobject->setAct(\Virtualizor\Objects\OSTemplates::LISTOS)->exec();
-```
