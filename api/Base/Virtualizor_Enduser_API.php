@@ -10,7 +10,7 @@ class Virtualizor_Enduser_API {
 	var $protocol = 'https';
 	var $error = array();
 	var $is_admin = false;
-	
+
 	/**
 	 * Contructor
 	 *
@@ -237,7 +237,7 @@ class Virtualizor_Enduser_API {
 	function vpsmanage($vid){
 	
 		//Make the Request
-		$res = $this->call('index.php?svs='.$vid.'&act=vpsmanage');
+        $res = $this->call('index.php?stats=1&svs='.$vid.'&act=vpsmanage');
 		//Did it finish?
 		return $res;	
 	}
