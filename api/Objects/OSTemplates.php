@@ -4,9 +4,12 @@ namespace Virtualizor\Objects;
 class OSTemplates {
 
     private $client;
+    private $userClient;
 
-    public function __construct($client) {
+    public function __construct($client, $userClient)
+    {
         $this->client = $client;
+        $this->userClient = $userClient;
         return $this;
     }
 

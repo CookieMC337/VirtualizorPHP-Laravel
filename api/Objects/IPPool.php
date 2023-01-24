@@ -5,9 +5,12 @@ namespace Virtualizor\Objects;
 
 class IPPool {
     private $client;
+    private $userClient;
 
-    public function __construct($client) {
+    public function __construct($client, $userClient)
+    {
         $this->client = $client;
+        $this->userClient = $userClient;
         return $this;
     }
 
@@ -75,6 +78,7 @@ class IPPool {
         $post['vps_search'] = '';
         $post['servers_search'] = '';
         $post['lockedsearch'] = '';
+        $post['ippid'] = '';
 
         return $this->client->ips($page,$reslen ,$post);
     }

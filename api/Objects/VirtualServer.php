@@ -12,10 +12,12 @@ class VirtualServer
 {
 
     private $client;
+    private $userClient;
 
-    public function __construct($client)
+    public function __construct($client, $userClient)
     {
         $this->client = $client;
+        $this->userClient = $userClient;
         return $this;
     }
 
@@ -41,9 +43,9 @@ class VirtualServer
 
     public function getInformation($vmid)
     {
-        $data = $this->client->status([$vmid]);
-        $data = json_decode(json_encode($data), true);
-        return $data[$vmid];
+        $data = $this->userClient->vpsinfo($vmid);
+        //$data = json_decode(json_encode($data), true);
+        return $data;
     }
 
     /**
