@@ -18,9 +18,9 @@ class Virtualizor {
      */
     private $userClient;
 
-    public function __construct($ip, $key, $pass, $port = '4085') {
-        $this->client = new Virtualizor_Admin_API($ip, $key, $pass, $port);
-        $this->userClient = new Virtualizor_Enduser_API($ip, $key, $pass, $port, 1);
+    public function __construct($ip, $key, $pass, $adminPort = '4085', $clientPort = '4083') {
+        $this->client = new Virtualizor_Admin_API($ip, $key, $pass, $adminPort);
+        $this->userClient = new Virtualizor_Enduser_API($ip, $key, $pass, $clientPort, 1);
     }
 
     public function server(): VirtualServer
@@ -42,13 +42,4 @@ class Virtualizor {
     {
         return new Users($this->client, $this->userClient);
     }
-
-    public function getStorages(int $page = 1, int $reslen = 50){
-        $post = array();
-        $post['name'] = '';
-        $post['path'] = '';
-
-        return $this->client->storages($post, $page, $reslen);
-    }
-
 }

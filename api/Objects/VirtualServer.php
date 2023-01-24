@@ -44,8 +44,8 @@ class VirtualServer
     public function getInformation($vmid)
     {
         $data = $this->userClient->vpsinfo($vmid);
-        //$data = json_decode(json_encode($data), true);
-        return $data;
+        $data = json_decode(json_encode($data), true);
+        return $data['info'];
     }
 
     /**
