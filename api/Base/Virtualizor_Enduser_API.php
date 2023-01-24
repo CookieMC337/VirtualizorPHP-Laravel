@@ -793,7 +793,7 @@ class Virtualizor_Enduser_API {
 					$post will be used to send the list of processes to be killed. If empty then processes will be listed
 	 * @return       array An array containing all the processes is returned
 	 */
-	function processes($post=array(),$vid){
+	function processes($vid, $post=array()){
 		
 		if(empty($post)){
 			$resp = $this->call('index.php?svs='.$vid.'&act=processes');
