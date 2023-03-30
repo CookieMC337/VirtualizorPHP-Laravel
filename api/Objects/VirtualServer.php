@@ -254,7 +254,7 @@ class VirtualServer
     {
         $post['cbackup'] = 1;
         $post['vid'] = $id;
-        $data = $this->userClient->backup($post);
+        $data = $this->userClient->backup($id, $post);
         return $data;
     }
 
