@@ -243,4 +243,45 @@ class VirtualServer
     }
 
 
+    public function getBackups(int $id)
+    {
+        $post['vid'] = $id;
+        $data = $this->userClient->list_backup($id);
+        return $data;
+    }
+
+    public function createBackup(int $id)
+    {
+        $post['cbackup'] = 1;
+        $post['vid'] = $id;
+        $data = $this->userClient->backup($post);
+        return $data;
+    }
+
+    public function restoreBackup(int $vm_id, string $date, string $file)
+    {
+        $post['date'] = $date;
+        $post['file'] = $file; //3.0.6.3
+        $post['restore'] = 1;
+        $data = $this->userClient->restore_backup($post, $vid);
+        return $data;
+    }
+
+    public function deleteBackup(int $vm_id, string $date, string $file)
+    {
+        $post['date'] = $date;
+        $post['file'] = $file; //3.0.6.3
+        $post['delete'] = 1;
+        $data = $this->userClient->delete_backup($post, $vid);
+        return $data;
+    }
+
+    public function getProcesses(int $id)
+    {
+        $data = $this->userClient->processes($id);
+        $data = json_decode(json_encode($data), true);
+        return $data['processes'];
+    }
+
+
 }
