@@ -232,15 +232,15 @@ class VirtualServer
     {
         return $this->client->resetbandwidth($id);
     }
-    
+
     public function getTasks(int $id)
     {
-            $post['act'] = "ctasks";
-    $post['svs'] = $id;
+        $post['act'] = "ctasks";
+        $post['svs'] = $id;
         $data = $this->userClient->tasks($post);
         $data = json_decode(json_encode($data), true);
-        return $data['var'];
+        return $data['tasks'];
     }
-    
+
 
 }
