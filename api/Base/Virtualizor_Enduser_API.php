@@ -328,8 +328,7 @@ class Virtualizor_Enduser_API {
 
 	function list_backup($vid){
 
-		//MAKE the Request
-		$res = $this->call('index.php?svs='.$vid.'&act=backup2', $post);
+		$res = $this->call('index.php?svs='.$vid.'&act=backup2');
 
 		$out['backups_list'] = $res['backups_list'];
 		$out['backup_limit'] = $res['backup_limit'];
@@ -1400,4 +1399,81 @@ class Virtualizor_Enduser_API {
 
 }
 
+//////////////
+// Examples
+//////////////
+
+//$v = new Virtualizor_Enduser_API('127.0.0.1', '16_BIT_API_KEY', '32_BIT_API_PASS');
+
+// Get the list of the VPS
+//$v->r($v->listvs());
+
+// Start a VPS
+//echo $v->start(3);
+
+// Stop a VPS
+//echo $v->stop(3);
+
+// Restart a VPS
+//echo $v->restart(3);
+
+// Poweroff a VPS
+//echo $v->poweroff(3);
+
+// Get the Status of a VPS
+//echo $v->status(3);
+
+// Get the Hostname
+//echo $v->hostname(4);
+
+// Change the Hostname
+//$v->r($v->hostname(4, 'NEWHOSTNAME'));
+
+// CPU Details
+//$v->r($v->cpu(4));
+
+// Ram Details
+//$v->r($v->ram(4));
+
+// Disk Details
+//$v->r($v->disk(4));
+
+// Bandwidth Details for the Current Month
+//$v->r($v->bandwidth(4));
+
+// Bandwidth Details for the Month of May in 2012
+//$v->r($v->bandwidth(4, 201205));
+
+// List the processes - OpenVZ only
+//$v->r($v->processes(4));
+
+// List the services - OpenVZ only
+//$v->r($v->services(4));
+
+// Change the Root Password of a Virtual Server ?
+//$v->r($v->changepassword(4, 'test'));
+
+// Give the VNC Details - VNC must be enabled - Xen / KVM
+//$v->r($v->vnc(4));
+
+// Change the VNC Password - VNC must be enabled - Xen / KVM
+//$v->r($v->vncpass(4, 'NEWpass'));
+
+// List available OS Templates
+//$v->r($v->ostemplate(2));
+
+// Reinstall the OS
+//$v->r($v->ostemplate(4, 1, 'test'));
+
+// Install a Control Panel
+//$v->r($v->controlpanel(4, 'cpanel'));
+
+// Add Enduser ISO
+// $v->r($v->addiso('1', 'http.kali.org/dists/kali-rolling/main/installer-amd64/current/images/netboot/mini.iso', 'mini.iso'));
+
+// List Enduser ISO
+// $v->r($v->listiso('1'));
+
+// Delete Enduser ISOs
+// $v->r($v->deliso(1,'dmqoknjv4lovwhif'));
 ?>
