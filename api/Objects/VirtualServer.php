@@ -65,7 +65,7 @@ class VirtualServer
      * @param null $lastname
      * @return mixed
      */
-    public function createKVM(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
+    public function createKVM(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
         if (!empty($userid)) {
@@ -96,6 +96,7 @@ class VirtualServer
         $post['swapram'] = 1024;
         $post['bandwidth'] = 1024;
         $post['cores'] = $cores;
+        $post['server_group'] = $server_group;
         $post['vnc'] = 1;
         $post['vncpass'] = 'test123';
         $post['vnc_keymap'] = 'de-de';
@@ -121,7 +122,7 @@ class VirtualServer
      * @param null $lastname
      * @return mixed
      */
-    public function createLXC(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
+    public function createLXC(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
         if (!empty($userid)) {
@@ -152,6 +153,7 @@ class VirtualServer
         $post['swapram'] = 1024;
         $post['bandwidth'] = 1024;
         $post['cores'] = $cores;
+        $post['server_group'] = $server_group;
         $post['vnc'] = 1;
         $post['vncpass'] = 'test123';
         $post['vnc_keymap'] = 'de-de';
