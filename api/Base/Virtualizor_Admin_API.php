@@ -272,6 +272,7 @@ class Virtualizor_Admin_API {
         $post = $this->clean_post($post);
         $ret = $this->call($path, '', $post, $cookies);
         return array(
+            'all' => $ret,
             'title' => $ret['title'],
             'error' => @empty($ret['error']) ? array() : $ret['error'],
             'vs_info' => $ret['newvs'],
@@ -292,13 +293,19 @@ class Virtualizor_Admin_API {
         $post['addvps'] = 1;
         $post['node_select'] = 1;
         $ret = $this->call($path, '', $post, $cookies);
-        return array(
+        $array = [
+            'all' => $ret,
             'title' => $ret['title'],
             'error' => @empty($ret['error']) ? array() : $ret['error'],
             'vs_info' => $ret['newvs'],
-            'globals' => $ret['globals'],
-            'done' => $ret['done']
-        );
+            'globals' => $ret['globals']
+        ];
+
+        if (isset($ret['done'])){
+            $array['done'] = $ret['done'];
+         }
+
+        return $array;
     }
 
     function addiprange($post){

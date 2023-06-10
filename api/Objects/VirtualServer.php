@@ -65,7 +65,7 @@ class VirtualServer
      * @param null $lastname
      * @return mixed
      */
-    public function createKVM(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
+    public function createKVM(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $bandwith = 0, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
         if (!empty($userid)) {
@@ -91,10 +91,11 @@ class VirtualServer
             'size' => $disk,
             'st_uuid' => $storageid,
             'bus_driver' => 'virtio',
-            'bus_driver_num' => 0));
+            'bus_driver_num' => 0
+        ));
         $post['ram'] = $ram; //
         $post['swapram'] = 1024;
-        $post['bandwidth'] = 1024;
+        $post['bandwidth'] = $bandwith;
         $post['cores'] = $cores;
         $post['server_group'] = $server_group;
         $post['vnc'] = 1;
@@ -122,7 +123,7 @@ class VirtualServer
      * @param null $lastname
      * @return mixed
      */
-    public function createLXC(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
+    public function createLXC(int $cores, int $ram, int $disk, string $storageid, int $os, string $hostname, string $rootpassword, array $ipsv4, int $ipv6, $server_group = null, $bandwith = 0, $userid = null, $mail = null, $username = null, $firstname = null, $lastname = null)
     {
         $post = array();
         if (!empty($userid)) {
@@ -151,7 +152,7 @@ class VirtualServer
             'bus_driver_num' => 0));
         $post['ram'] = $ram; //
         $post['swapram'] = 1024;
-        $post['bandwidth'] = 1024;
+        $post['bandwidth'] = $bandwith;
         $post['cores'] = $cores;
         $post['server_group'] = $server_group;
         $post['vnc'] = 1;
