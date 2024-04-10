@@ -98,6 +98,7 @@ class VirtualServer
         $post['cores'] = $cores;
         $post['server_group'] = $server_group;
         $post['vnc'] = 1;
+        $post['node_select'] = 1;
         $post['vncpass'] = 'test123';
         $post['plid'] = $templateId;
         $post['vnc_keymap'] = 'de-de';
